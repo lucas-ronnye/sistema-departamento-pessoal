@@ -1,0 +1,17 @@
+<svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RH Digital">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0,0)">
+    <rect x="0" y="0" rx="10" ry="10" width="40" height="40" fill="url(#g1)"/>
+    <path d="M10 28 V12 H18 C21 12 23 14 23 17 C23 20 21 22 18 22 H14 V28 Z M14 18 H18 C19.5 18 20.5 17 20.5 15.8 C20.5 14.6 19.5 13.6 18 13.6 H14 V18 Z" fill="#ffffff" opacity="0.95"/>
+    <path d="M26 12 H30 V18 H36 V12 H40 V28 H36 V21 H30 V28 H26 Z" fill="#ffffff" opacity="0.95"/>
+  </g>
+  <g transform="translate(48,27)">
+    <text x="0" y="0" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial" font-weight="700" font-size="18" fill="#0f172a">RH</text>
+    <text x="40" y="0" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial" font-weight="600" font-size="18" fill="#334155">Digital</text>
+  </g>
+</svg>

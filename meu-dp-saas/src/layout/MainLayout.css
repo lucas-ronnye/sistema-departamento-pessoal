@@ -1,0 +1,65 @@
+/* Permitir nomes completos no sidebar com quebras de linha e sem elipse */
+.app-sider .ant-menu-item {
+  height: auto;
+  line-height: 1.3;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  align-items: flex-start; /* alinha ícone e texto no topo para múltiplas linhas */
+}
+
+.app-sider .ant-menu-item .ant-menu-title-content {
+  white-space: normal; /* permite quebra de linha */
+  overflow: visible;
+  text-overflow: clip; /* evita elipse */
+}
+
+/* Ajuste discreto para o ícone não centralizar verticalmente excessivo em itens multi-linha */
+.app-sider .ant-menu-item .ant-menu-item-icon {
+  margin-top: 2px;
+}
+
+/* ===== Aparência do Sidebar (modo claro) ===== */
+html[data-theme="light"] .app-sider {
+  /* Gradiente um tom mais claro para suavizar o visual */
+  background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
+}
+html[data-theme="light"] .app-sider .ant-menu {
+  background: transparent;
+}
+html[data-theme="light"] .app-sider .ant-menu-item {
+  color: #e2e8f0;
+}
+html[data-theme="light"] .app-sider .ant-menu-item-selected {
+  background-color: rgba(99, 102, 241, 0.25);
+  color: #ffffff;
+  border-radius: 10px;
+}
+html[data-theme="light"] .app-sider .ant-menu-item:hover {
+  background-color: rgba(148, 163, 184, 0.20);
+  border-radius: 10px;
+}
+
+/* ===== Menu móvel (Tabs bottom) com paleta do Sidebar ===== */
+html[data-theme="light"] .mobile-tabs {
+  background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
+  border-top: 1px solid rgba(17, 24, 39, 0.14);
+}
+html[data-theme="light"] .mobile-tabs .ant-tabs-nav {
+  margin: 0;
+}
+html[data-theme="light"] .mobile-tabs .ant-tabs-tab {
+  color: #e2e8f0;
+}
+html[data-theme="light"] .mobile-tabs .ant-tabs-tab:hover {
+  color: #ffffff;
+}
+html[data-theme="light"] .mobile-tabs .ant-tabs-tab-active {
+  background-color: rgba(99, 102, 241, 0.25);
+  border-radius: 12px;
+}
+html[data-theme="light"] .mobile-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #ffffff;
+}
+html[data-theme="light"] .mobile-tabs .ant-tabs-ink-bar {
+  background: #6366f1;
+}

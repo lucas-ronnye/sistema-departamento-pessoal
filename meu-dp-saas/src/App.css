@@ -1,0 +1,4 @@
+/* Resetar estilos gerados pelo template para não afetar o layout AntD */
+#root {
+  height: 100%;
+}

@@ -1,0 +1,126 @@
+/* Reset mínimo para não interferir nos estilos do Ant Design */
+html, body, #root {
+  height: 100%;
+}
+
+html[data-theme="light"] body {
+  margin: 0;
+  /* Fundo com gradientes suaves e toques da cor primária para um visual mais vivo */
+  background:
+    radial-gradient(600px circle at 10% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+    radial-gradient(800px circle at 90% 0%, rgba(59, 130, 246, 0.12) 0%, transparent 45%),
+    linear-gradient(120deg, #f8fafc 0%, #eef2ff 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html[data-theme="dark"] body {
+  margin: 0;
+  background: #141414; /* padrão do layout escuro */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Não estilize globalmente <button>; deixe o AntD controlar */
+
+/* ===== Variáveis de marca e estilos da página de Login ===== */
+:root {
+  --brand-primary: #3B82F6;
+  --text-muted: #64748b;
+  --login-bg: radial-gradient(600px circle at 5% 10%, rgba(59,130,246,0.12) 0%, transparent 40%),
+               linear-gradient(135deg, #f5f7fb 0%, #eaf0ff 100%);
+}
+
+html[data-theme="dark"] {
+  --text-muted: #94a3b8;
+  --login-bg: radial-gradient(700px circle at 10% 10%, rgba(59,130,246,0.18) 0%, transparent 45%),
+               linear-gradient(135deg, #0f141c 0%, #111827 100%);
+}
+
+.login-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--login-bg);
+}
+
+.login-card {
+  width: 420px;
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 30px -16px rgba(0, 0, 0, 0.25);
+}
+
+.login-brand {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.login-brand .subtitle {
+  color: var(--text-muted);
+}
+
+/* ===== Aparência: glass/blur e botões marcantes (modo claro) ===== */
+html[data-theme="light"] .ant-layout-header {
+  backdrop-filter: saturate(160%) blur(8px);
+  background: rgba(255, 255, 255, 0.65) !important;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+html[data-theme="light"] .ant-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: saturate(160%) blur(6px);
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  box-shadow: 0 20px 32px -20px rgba(2, 6, 23, 0.25);
+}
+
+html[data-theme="light"] .ant-btn-primary {
+  background-image: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
+  box-shadow: 0 12px 24px -10px rgba(99, 102, 241, 0.50);
+}
+html[data-theme="light"] .ant-btn-primary:hover {
+  filter: brightness(1.05);
+}
+html[data-theme="light"] .ant-btn-primary:active {
+  filter: brightness(0.98);
+}
+
+/* ===== Responsividade Global ===== */
+@media (max-width: 576px) {
+  /* Reduzir paddings para caber melhor em telas pequenas */
+  .ant-layout-content {
+    padding: 12px !important;
+  }
+  .ant-card-head {
+    padding: 0 12px !important;
+  }
+  .ant-card-body {
+    padding: 12px !important;
+  }
+  /* Tabelas mais legíveis e com quebra de palavras longas */
+  .ant-table-wrapper {
+    overflow-x: auto;
+  }
+  .ant-table {
+    font-size: 13px;
+    word-break: break-word;
+  }
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    padding: 8px 12px;
+  }
+  /* Formulários mais compactos */
+  .ant-form-item {
+    margin-bottom: 12px;
+  }
+  /* Toolbars e cabeçalhos com wrap por padrão */
+  .page-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+  }
+}
