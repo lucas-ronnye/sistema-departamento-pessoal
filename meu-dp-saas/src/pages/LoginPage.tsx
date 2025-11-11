@@ -3,7 +3,6 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { useAuth } from '../core/AuthContext'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import rhLogo from '../assets/logo-rh-digital.svg'
 
 function LoginPage() {
   const [form] = Form.useForm()
@@ -34,9 +33,16 @@ function LoginPage() {
     <div className="login-wrap">
       <Card className="login-card" hoverable>
         <div className="login-brand">
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <img src={rhLogo} alt="RH Digital" style={{ height: 32 }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
+            {/* Logo transparente do public com maior destaque */}
+            <img
+              src="/logo-rh-digital.png?v=3"
+              alt="RH Digital"
+              style={{ height: 200 }}
+              onError={(e) => { e.currentTarget.src = '/logo-rh-digital-512.png?v=3' }}
+            />
           </div>
+          <Typography.Text className="login-slogan">Seu RH sempre conectado. </Typography.Text>
           <Typography.Text className="subtitle">Bem-vindo! Faça login para continuar.</Typography.Text>
         </div>
 

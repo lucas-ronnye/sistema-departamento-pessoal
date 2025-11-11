@@ -6,7 +6,6 @@ import SiderMenu from './SiderMenu.tsx'
 import './MainLayout.css'
 import { useAuth } from '../core/AuthContext'
 import { useThemeMode } from '../core/ThemeContext'
-import rhLogo from '../assets/logo-rh-digital.svg'
 
 const { Header, Sider, Content } = Layout
 
@@ -59,10 +58,19 @@ function MainLayout() {
             alignItems: 'center',
             justifyContent: 'space-between',
             paddingInline: 16,
+            paddingTop: 10,
+            paddingBottom: 10,
+            minHeight: 76,
           }}
         >
           <Space align="center" style={{ gap: 8 }}>
-            <img src={rhLogo} alt="RH Digital" style={{ height: 24 }} />
+            {/* Logo transparente do public, com destaque maior */}
+            <img
+              src="/logo-rh-digital.png?v=3"
+              alt="RH Digital"
+              style={{ height: 55 }}
+              onError={(e) => { e.currentTarget.src = '/logo-rh-digital-512.png?v=3' }}
+            />
           </Space>
           <Space>
             {installPrompt && (
@@ -133,7 +141,12 @@ function MainLayout() {
           {collapsed ? (
             <Typography.Text strong>RH</Typography.Text>
           ) : (
-            <img src={rhLogo} alt="RH Digital" style={{ height: 24 }} />
+            <img
+              src="/logo-rh-digital.png?v=3"
+              alt="RH Digital"
+              style={{ height: 120 }}
+              onError={(e) => { e.currentTarget.src = '/logo-rh-digital-512.png?v=3' }}
+            />
           )}
           <Button
             type="text"

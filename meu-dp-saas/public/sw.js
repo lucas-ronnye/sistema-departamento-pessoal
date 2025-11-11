@@ -1,4 +1,4 @@
-const CACHE_NAME = 'meu-dp-saas-v1'
+const CACHE_NAME = 'meu-dp-saas-v3'
 const CORE_ASSETS = [
   '/',
   '/index.html',
@@ -30,6 +30,17 @@ self.addEventListener('fetch', (event) => {
     )
     return
   }
+
+  // Não cachear explicitamente a logo para evitar versões antigas
+  try {
+    const url = new URL(request.url)
+    if (url.pathname.startsWith('/logo-rh-digital')) {
+      event.respondWith(
+        fetch(request).catch(() => caches.match(request))
+      )
+      return
+    }
+  } catch {}
 
   event.respondWith(
     fetch(request)

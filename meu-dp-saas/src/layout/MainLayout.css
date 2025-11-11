@@ -5,6 +5,8 @@
   padding-top: 8px;
   padding-bottom: 8px;
   align-items: flex-start; /* alinha ícone e texto no topo para múltiplas linhas */
+  position: relative;
+  transition: background-color 220ms ease, box-shadow 220ms ease, transform 180ms ease;
 }
 
 .app-sider .ant-menu-item .ant-menu-title-content {
@@ -16,50 +18,205 @@
 /* Ajuste discreto para o ícone não centralizar verticalmente excessivo em itens multi-linha */
 .app-sider .ant-menu-item .ant-menu-item-icon {
   margin-top: 2px;
+  transition: transform 180ms ease, filter 180ms ease;
 }
 
 /* ===== Aparência do Sidebar (modo claro) ===== */
 html[data-theme="light"] .app-sider {
-  /* Gradiente um tom mais claro para suavizar o visual */
-  background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
+  /* Sidebar ainda mais claro dentro da paleta teal */
+  background: linear-gradient(180deg, #ffffff 0%, #e6fffa 100%);
 }
 html[data-theme="light"] .app-sider .ant-menu {
   background: transparent;
 }
 html[data-theme="light"] .app-sider .ant-menu-item {
-  color: #e2e8f0;
+  color: #134e4a;
 }
 html[data-theme="light"] .app-sider .ant-menu-item-selected {
-  background-color: rgba(99, 102, 241, 0.25);
-  color: #ffffff;
+  background-color: rgba(14, 165, 169, 0.14);
+  color: #0f3d3a;
   border-radius: 10px;
+  box-shadow: inset 0 0 0 1px rgba(14, 165, 169, 0.35);
+  transform: translateX(1px);
 }
 html[data-theme="light"] .app-sider .ant-menu-item:hover {
-  background-color: rgba(148, 163, 184, 0.20);
+  background-color: rgba(14, 165, 169, 0.10);
   border-radius: 10px;
+  box-shadow: 0 8px 18px -14px rgba(14, 165, 169, 0.35);
+}
+
+/* Ajuste de contraste para elementos do topo no modo claro */
+html[data-theme="light"] .app-sider .ant-typography {
+  color: #134e4a !important;
+}
+
+html[data-theme="light"] .app-sider .ant-btn {
+  color: #0f766e !important;
+}
+
+/* Acento animado à esquerda no item selecionado */
+.app-sider .ant-menu-item-selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 3px;
+  background-image: linear-gradient(180deg, #0ea5a9, #22d3ee);
+  border-radius: 3px;
+  transform: scaleY(0);
+  transform-origin: center;
+  animation: accentGrow 280ms ease-out forwards;
+}
+
+@keyframes accentGrow {
+  to { transform: scaleY(1); }
+}
+
+/* Microinterações nos ícones do menu */
+.app-sider .ant-menu-item:hover .ant-menu-item-icon {
+  transform: scale(1.06);
+  filter: drop-shadow(0 2px 6px rgba(14, 165, 169, 0.35));
+}
+.app-sider .ant-menu-item-selected .ant-menu-item-icon {
+  transform: scale(1.08);
+}
+
+/* Stagger suave na entrada dos itens do menu */
+.app-sider .ant-menu-item { animation: menuAppear 260ms ease-out both; }
+.app-sider .ant-menu-item:nth-child(1) { animation-delay: 40ms; }
+.app-sider .ant-menu-item:nth-child(2) { animation-delay: 80ms; }
+.app-sider .ant-menu-item:nth-child(3) { animation-delay: 120ms; }
+.app-sider .ant-menu-item:nth-child(4) { animation-delay: 160ms; }
+.app-sider .ant-menu-item:nth-child(5) { animation-delay: 200ms; }
+.app-sider .ant-menu-item:nth-child(6) { animation-delay: 240ms; }
+.app-sider .ant-menu-item:nth-child(7) { animation-delay: 280ms; }
+.app-sider .ant-menu-item:nth-child(8) { animation-delay: 320ms; }
+
+@keyframes menuAppear {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== Menu móvel (Tabs bottom) com paleta do Sidebar ===== */
 html[data-theme="light"] .mobile-tabs {
-  background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
-  border-top: 1px solid rgba(17, 24, 39, 0.14);
+  background: linear-gradient(180deg, #ffffff 0%, #e6fffa 100%);
+  border-top: 1px solid rgba(14, 165, 169, 0.25);
 }
 html[data-theme="light"] .mobile-tabs .ant-tabs-nav {
   margin: 0;
 }
 html[data-theme="light"] .mobile-tabs .ant-tabs-tab {
-  color: #e2e8f0;
+  color: #134e4a;
 }
 html[data-theme="light"] .mobile-tabs .ant-tabs-tab:hover {
-  color: #ffffff;
+  color: #0f3d3a;
 }
 html[data-theme="light"] .mobile-tabs .ant-tabs-tab-active {
-  background-color: rgba(99, 102, 241, 0.25);
+  background-color: rgba(14, 165, 169, 0.14);
   border-radius: 12px;
 }
 html[data-theme="light"] .mobile-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: #ffffff;
+  color: #0f3d3a;
 }
 html[data-theme="light"] .mobile-tabs .ant-tabs-ink-bar {
-  background: #6366f1;
+  background: var(--brand-primary);
+}
+
+/* ===== Aparência do Sidebar e Tabs no modo escuro alinhados à paleta ===== */
+html[data-theme="dark"] .app-sider {
+  background: linear-gradient(180deg, #0b1320 0%, #0f3d3a 100%);
+}
+html[data-theme="dark"] .app-sider .ant-menu {
+  background: transparent;
+}
+html[data-theme="dark"] .app-sider .ant-menu-item {
+  color: #cbd5e1;
+}
+html[data-theme="dark"] .app-sider .ant-menu-item-selected {
+  background-color: rgba(14, 165, 169, 0.28);
+  color: #ffffff;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px rgba(14, 165, 169, 0.35);
+  transform: translateX(1px);
+}
+html[data-theme="dark"] .app-sider .ant-menu-item:hover {
+  background-color: rgba(14, 165, 169, 0.18);
+  border-radius: 10px;
+  box-shadow: 0 8px 18px -12px rgba(14, 165, 169, 0.45);
+}
+
+/* ===== Interações modernas nas Tabs móveis ===== */
+.mobile-tabs .ant-tabs-ink-bar {
+  height: 3px;
+  border-radius: 3px;
+  transition: width 240ms ease, left 240ms ease, background-color 240ms ease;
+}
+.mobile-tabs .ant-tabs-tab {
+  transition: transform 180ms ease, background-color 220ms ease, box-shadow 220ms ease;
+  position: relative;
+}
+.mobile-tabs .ant-tabs-tab:hover { transform: translateY(-1px); }
+.mobile-tabs .ant-tabs-tab.ant-tabs-tab-active { transform: translateY(-2px); }
+.mobile-tabs .ant-tabs-tab.ant-tabs-tab-active {
+  box-shadow: 0 8px 18px -12px rgba(14, 165, 169, 0.45);
+}
+.mobile-tabs .ant-tabs-tab .anticon {
+  transition: transform 180ms ease, filter 180ms ease;
+}
+.mobile-tabs .ant-tabs-tab:hover .anticon { transform: scale(1.05); }
+.mobile-tabs .ant-tabs-tab-active .anticon {
+  transform: scale(1.08);
+  filter: drop-shadow(0 2px 6px rgba(34, 211, 238, 0.35));
+}
+
+/* Menu móvel (Tabs bottom) no modo escuro com a mesma paleta */
+html[data-theme="dark"] .mobile-tabs {
+  background: linear-gradient(180deg, #0f172a 0%, #0b2f2c 100%);
+  border-top: 1px solid rgba(14, 165, 169, 0.25);
+}
+html[data-theme="dark"] .mobile-tabs .ant-tabs-nav {
+  margin: 0;
+}
+html[data-theme="dark"] .mobile-tabs .ant-tabs-tab {
+  color: #cbd5e1;
+}
+html[data-theme="dark"] .mobile-tabs .ant-tabs-tab:hover {
+  color: #ffffff;
+}
+html[data-theme="dark"] .mobile-tabs .ant-tabs-tab-active {
+  background-color: rgba(14, 165, 169, 0.25);
+  border-radius: 12px;
+}
+html[data-theme="dark"] .mobile-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #ffffff;
+}
+html[data-theme="dark"] .mobile-tabs .ant-tabs-ink-bar {
+  background: var(--brand-primary);
+}
+
+/* ===== Alinhamento dos ícones e nomes nas Tabs móveis ===== */
+.mobile-tabs .ant-tabs-nav {
+  margin: 0;
+}
+.mobile-tabs .ant-tabs-nav-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.mobile-tabs .ant-tabs-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
+}
+.mobile-tabs .ant-tabs-tab .ant-tabs-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+}
+.mobile-tabs .ant-tabs-tab .anticon {
+  font-size: 18px;
+  line-height: 1;
 }

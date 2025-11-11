@@ -7,9 +7,9 @@ html[data-theme="light"] body {
   margin: 0;
   /* Fundo com gradientes suaves e toques da cor primária para um visual mais vivo */
   background:
-    radial-gradient(600px circle at 10% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
-    radial-gradient(800px circle at 90% 0%, rgba(59, 130, 246, 0.12) 0%, transparent 45%),
-    linear-gradient(120deg, #f8fafc 0%, #eef2ff 100%);
+    radial-gradient(600px circle at 10% 10%, rgba(14, 165, 169, 0.12) 0%, transparent 40%),
+    radial-gradient(800px circle at 90% 0%, rgba(34, 211, 238, 0.12) 0%, transparent 45%),
+    linear-gradient(120deg, #f8fafc 0%, #f0fdfa 100%);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,15 +25,15 @@ html[data-theme="dark"] body {
 
 /* ===== Variáveis de marca e estilos da página de Login ===== */
 :root {
-  --brand-primary: #3B82F6;
+  --brand-primary: #0ea5a9;
   --text-muted: #64748b;
-  --login-bg: radial-gradient(600px circle at 5% 10%, rgba(59,130,246,0.12) 0%, transparent 40%),
-               linear-gradient(135deg, #f5f7fb 0%, #eaf0ff 100%);
+  --login-bg: radial-gradient(600px circle at 5% 10%, rgba(14,165,169,0.12) 0%, transparent 40%),
+               linear-gradient(135deg, #f5f7fb 0%, #ecfeff 100%);
 }
 
 html[data-theme="dark"] {
   --text-muted: #94a3b8;
-  --login-bg: radial-gradient(700px circle at 10% 10%, rgba(59,130,246,0.18) 0%, transparent 45%),
+  --login-bg: radial-gradient(700px circle at 10% 10%, rgba(14,165,169,0.20) 0%, transparent 45%),
                linear-gradient(135deg, #0f141c 0%, #111827 100%);
 }
 
@@ -54,11 +54,57 @@ html[data-theme="dark"] {
 
 .login-brand {
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+}
+.login-brand img {
+  height: 64px;
+  /* Remover sombra forte que criava sensação de espaço abaixo da logo */
+  filter: none;
+  display: block; /* evita espaço de linha por alinhamento de baseline */
+  margin-bottom: -14px; /* aproxima/encosta a frase na base da logo */
 }
 
 .login-brand .subtitle {
   color: var(--text-muted);
+}
+
+/* Frase de destaque abaixo da logo */
+.login-slogan {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 0.82; /* colar totalmente na logo */
+  display: block;
+  margin-top: -14px; /* zero espaço visual entre logo e frase */
+  transform: translateY(-2px); /* sobreposição mínima para eliminar qualquer resíduo */
+  background-image: linear-gradient(135deg, #0ea5a9 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.login-brand .subtitle {
+  margin-top: 10px; /* garante respiro após a frase colada à logo */
+}
+
+/* Login Card destacado (glass + gradiente + sombra) */
+.login-card {
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.85), rgba(2, 6, 23, 0.65)) !important;
+  backdrop-filter: saturate(160%) blur(8px);
+  border: 1px solid rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 24px 48px -20px rgba(14, 165, 169, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+
+/* No modo claro, mantenha o card igualmente destacado */
+html[data-theme="light"] .login-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(236, 254, 255, 0.85)) !important;
+  border: 1px solid rgba(17, 24, 39, 0.10) !important;
+  box-shadow: 0 24px 48px -20px rgba(2, 6, 23, 0.25) !important;
 }
 
 /* ===== Aparência: glass/blur e botões marcantes (modo claro) ===== */
@@ -66,6 +112,48 @@ html[data-theme="light"] .ant-layout-header {
   backdrop-filter: saturate(160%) blur(8px);
   background: rgba(255, 255, 255, 0.65) !important;
   border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+/* ===== Realce de header no modo escuro com toque da paleta ===== */
+html[data-theme="dark"] .ant-layout-header {
+  backdrop-filter: saturate(160%) blur(8px);
+  background: rgba(8, 16, 24, 0.55) !important;
+  border-bottom: 1px solid rgba(14, 165, 169, 0.25);
+}
+
+/* ===== Botões primários no modo escuro (gradiente teal) ===== */
+html[data-theme="dark"] .ant-btn-primary {
+  background-image: linear-gradient(135deg, #0ea5a9 0%, #22d3ee 100%);
+  box-shadow: 0 12px 24px -10px rgba(14, 165, 169, 0.45);
+  border: none;
+  color: #ffffff;
+}
+html[data-theme="dark"] .ant-btn-primary:hover {
+  filter: brightness(1.06);
+}
+html[data-theme="dark"] .ant-btn-primary:active {
+  filter: brightness(0.98);
+}
+
+/* ===== Tipografia no modo escuro ===== */
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] .ant-card-head-title,
+html[data-theme="dark"] .ant-typography h1,
+html[data-theme="dark"] .ant-typography h2,
+html[data-theme="dark"] .ant-typography h3 {
+  color: #e2e8f0;
+}
+html[data-theme="dark"] .ant-typography,
+html[data-theme="dark"] .ant-breadcrumb,
+html[data-theme="dark"] .ant-descriptions-item-label,
+html[data-theme="dark"] .ant-form-item-label > label {
+  color: #cbd5e1;
+}
+html[data-theme="dark"] .subtitle,
+html[data-theme="dark"] .ant-typography-secondary {
+  color: #94a3b8 !important;
 }
 
 html[data-theme="light"] .ant-card {
@@ -76,14 +164,59 @@ html[data-theme="light"] .ant-card {
 }
 
 html[data-theme="light"] .ant-btn-primary {
-  background-image: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
-  box-shadow: 0 12px 24px -10px rgba(99, 102, 241, 0.50);
+  background-image: linear-gradient(135deg, #0ea5a9 0%, #22d3ee 100%);
+  box-shadow: 0 12px 24px -10px rgba(14, 165, 169, 0.50);
 }
 html[data-theme="light"] .ant-btn-primary:hover {
   filter: brightness(1.05);
 }
 html[data-theme="light"] .ant-btn-primary:active {
   filter: brightness(0.98);
+}
+
+/* ===== Movimentos e microinterações nos cards do Dashboard ===== */
+.dashboard-card {
+  position: relative;
+  transition: transform 200ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  will-change: transform;
+  border-radius: 12px !important;
+  overflow: hidden;
+}
+.dashboard-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 18px 32px -18px rgba(14, 165, 169, 0.45), 0 8px 24px -12px rgba(2, 6, 23, 0.35);
+}
+.dashboard-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(14,165,169,0.0) 20%, rgba(14,165,169,0.12) 40%, rgba(34,211,238,0.0) 60%);
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.dashboard-card:hover::before {
+  animation: cardShine 900ms ease-out forwards;
+}
+@keyframes cardShine {
+  0% { transform: translateX(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+/* Entrada suave dos cards */
+.dashboard-card { animation: cardAppear 260ms ease-out both; }
+@keyframes cardAppear {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dark mode: realces e sombras ajustadas */
+html[data-theme="dark"] .dashboard-card:hover {
+  box-shadow: 0 18px 32px -18px rgba(14, 165, 169, 0.55), 0 8px 24px -12px rgba(14, 165, 169, 0.25);
+}
+html[data-theme="dark"] .dashboard-card::before {
+  background: linear-gradient(120deg, rgba(14,165,169,0.0) 20%, rgba(14,165,169,0.18) 40%, rgba(34,211,238,0.0) 60%);
 }
 
 /* ===== Responsividade Global ===== */

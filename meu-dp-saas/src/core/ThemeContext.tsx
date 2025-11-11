@@ -40,9 +40,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         theme={{
           algorithm,
           token: {
-            // Marca
-            colorPrimary: '#6366f1', // Indigo 500 para mais impacto
-            colorInfo: '#6366f1',
+            // Marca RH Digital baseada na logo (teal/ciano)
+            colorPrimary: '#0ea5a9',
+            colorInfo: '#22d3ee',
             borderRadius: 12,
             fontFamily:
               "Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
@@ -64,8 +64,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
             },
             Button: {
               controlHeight: 40,
-              colorPrimaryHover: '#4f46e5',
-              colorPrimaryActive: '#4338ca',
+              colorPrimaryHover: '#0d9488',
+              colorPrimaryActive: '#0f766e',
               borderRadiusLG: 12,
             },
             Input: {
@@ -73,8 +73,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
               controlHeightLG: 44,
             },
             Tabs: {
-              itemActiveColor: '#6366f1',
-              inkBarColor: '#6366f1',
+              itemActiveColor: '#0ea5a9',
+              inkBarColor: '#0ea5a9',
             },
           },
         }}

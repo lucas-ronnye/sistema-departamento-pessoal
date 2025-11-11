@@ -87,6 +87,20 @@ function DashboardPage() {
     })()
   }, [fetchSummary]);
 
+  // Mapear rótulos e cores de status para PT-BR
+  const statusLabelPt: Record<DashboardSummary['eventosRecentes'][number]['status'], string> = {
+    success: 'Sucesso',
+    error: 'Erro',
+    warning: 'Atenção',
+    info: 'Informação',
+  };
+  const statusColorMap: Record<DashboardSummary['eventosRecentes'][number]['status'], string> = {
+    success: 'green',
+    error: 'red',
+    warning: 'orange',
+    info: 'blue',
+  };
+
   const eventosColumns = [
     { title: 'Tipo', dataIndex: 'tipo', key: 'tipo' },
     { title: 'Descrição', dataIndex: 'descricao', key: 'descricao' },
@@ -96,15 +110,15 @@ function DashboardPage() {
       dataIndex: 'status',
       key: 'status',
       render: (status: DashboardSummary['eventosRecentes'][number]['status']) => (
-        <Tag color={status === 'success' ? 'green' : status === 'error' ? 'red' : 'blue'}>
-          {status.toUpperCase()}
+        <Tag color={statusColorMap[status]}>
+          {statusLabelPt[status]}
         </Tag>
       ),
     },
   ];
 
   return (
-    <Card>
+    <Card className="dashboard-card">
       <Space direction="vertical" style={{ width: '100%' }} size="large">
         <Breadcrumb items={[{ title: 'Dashboard' }]} />
         <Title level={3} style={{ margin: 0 }}>Visão Geral do Sistema</Title>
@@ -114,7 +128,7 @@ function DashboardPage() {
             <>
               <Row gutter={16}>
                 <Col span={8}>
-                  <Card>
+                  <Card className="dashboard-card">
                     <Statistic
                       title="Total de Colaboradores"
                       value={summary.totalColaboradores}
@@ -123,7 +137,7 @@ function DashboardPage() {
                   </Card>
                 </Col>
                 <Col span={8}>
-                  <Card>
+                  <Card className="dashboard-card">
                     <Statistic
                       title="Colaboradores Ativos"
                       value={summary.colaboradoresAtivos}
@@ -133,7 +147,7 @@ function DashboardPage() {
                   </Card>
                 </Col>
                 <Col span={8}>
-                  <Card>
+                  <Card className="dashboard-card">
                     <Statistic
                       title="Saldo Banco de Horas"
                       value={summary.saldoBancoHorasTotal}
@@ -147,7 +161,7 @@ function DashboardPage() {
               <Title level={4} style={{ marginTop: 24 }}>Impostos</Title>
               <Row gutter={16}>
                 <Col span={12}>
-                  <Card>
+                  <Card className="dashboard-card">
                     <Space direction="vertical" style={{ width: '100%' }}>
                       <Space>
                         <Typography.Text strong>FGTS Digital</Typography.Text>
@@ -168,7 +182,7 @@ function DashboardPage() {
                   </Card>
                 </Col>
                 <Col span={12}>
-                  <Card>
+                  <Card className="dashboard-card">
                     <Space direction="vertical" style={{ width: '100%' }}>
                       <Space>
                         <Typography.Text strong>DCTFWeb</Typography.Text>
